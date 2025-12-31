@@ -14,7 +14,7 @@ function App() {
     pageContenu.innerHTML = "Rendu des pages : Accueil, Services et Contact"
 
     //Ajouter l'Entete de la page dans root
-    root.appendChild(Entete(pageContenu));
+    root.appendChild(Entete());
 
     //Ajouter pageContenu dans root
     root.appendChild(pageContenu);
@@ -30,49 +30,63 @@ function App() {
  * Cette fonction initialise l'en-tête de l'application et configure la barre de navigation.
  * Lorsque l'utilisateur sélectionne une page dans la barre de navigation, le contenu de
  * `PageConteneur` est mis à jour pour afficher la page correspondante.
- *
- * @param {HTMLElement} PageConteneur - L'élément HTML qui contient le contenu principal.
- *                                       Il sera mis à jour dynamiquement selon la page sélectionnée.
  */
-function Entete(pageConteneur) {
+function Entete() {
     //----- 1.. Créer l'élément HTML <div> #entete 
     let divEntete = document.createElement('div');
     divEntete.id = "entete";
 
-    //----- 2..  Création de la structure de la barre de navigation
-    const nav = document.createElement('nav');
+    //----- 2.. Creer La barre de navigation 
+    divEntete.appendChild(BarreNavigation());
 
-    // Création de la list de navigation
-    const ul = document.createElement('ul');
+    //----- 4.. Rendu de la fonction Entete 
+    return divEntete;
+}
 
-    // list des links de navigation
+/**
+ * Crée la barre de navigation de l’application.
+ *
+ * Cette fonction génère les éléments du menu de navigation (liens ou boutons)
+ * permettant à l’utilisateur de naviguer entre les différentes pages de l’application.
+ * Chaque action de navigation déclenche le changement du contenu affiché
+ * dans le conteneur principal de la page.
+ */
+function BarreNavigation() {
+    //----- 1.. List des liens de navigation
     const links = [
         { name: 'Accueil', page: 'accueil' },
         { name: 'Services', page: 'services' },
         { name: 'Contact', page: 'contact' }
     ];
 
+
+    //----- 2..  Création de la structure de la barre de navigation
+    const nav = document.createElement('nav');
+    // Création de la list de navigation
+    const ul = document.createElement('ul');
     // Création des éléments de la list avec les liens
     links.forEach(link => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.textContent = link.name;
-        a.onclick = function () {
-            Page(link.page, pageConteneur); // Appelle la fonction pour afficher la page correspondante
-        };
         li.appendChild(a);
         ul.appendChild(li);
     });
     nav.appendChild(ul);
 
-    //----- 3..  Inserer <nav> dans la balise divEntete
-    divEntete.appendChild(nav);
-
-    //----- 4.. Rendu de la fonction Entete 
-    return divEntete;
+    //----- 3.. Rendu de la fonction BarreNavigation
+    return nav;
 }
 
-// Élaborer la structure du pied de page de l’application. 
+
+/**
+ * Crée la structure du pied de page de l’application.
+ *
+ * Cette fonction initialise le pied de page qui apparaîtra en bas de l'application.
+ * Il peut contenir des informations telles que les crédits, les liens importants ou
+ * toute autre information pertinente.
+ */
+
 function PiedPage() {
     //----- 1.. Créer l'élément #piedPage
     let divPiedPage = document.createElement('div');
