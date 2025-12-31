@@ -11,7 +11,7 @@ function App() {
     // Créez une <div> qui accueillera tout le contenu des différentes pages 
     // de l’application : Accueil, Services et Conyact
     const pageContenu = document.createElement("div");
-    pageContenu.innerHTML = "Rendu des pages : Accueil, Services et Contact"
+    pageContenu.innerHTML = "Contenu des pages : Accueil, Services et Contact"
 
     //Ajouter l'Entete de la page dans root
     root.appendChild(Entete(pageContenu));
@@ -31,41 +31,16 @@ function App() {
  * Lorsque l'utilisateur sélectionne une page dans la barre de navigation, le contenu de
  * `PageConteneur` est mis à jour pour afficher la page correspondante.
  *
- * @param {HTMLElement} PageConteneur - L'élément HTML qui contient le contenu principal.
- *                                       Il sera mis à jour dynamiquement selon la page sélectionnée.
  */
-function Entete(pageConteneur) {
+function Entete() {
     //----- 1.. Créer l'élément HTML <div> #entete 
     let divEntete = document.createElement('div');
     divEntete.id = "entete";
 
-    //----- 2..  Création de la structure de la barre de navigation
-    const nav = document.createElement('nav');
+    //----- 2.. Contenu de l'entete
+    divEntete.innerHTML = "Ajouter ic le contenu de l'en-tête de la page"
 
-    // Création de la list de navigation
-    const ul = document.createElement('ul');
-
-    // list des links de navigation
-    const links = [
-        { name: 'Accueil', page: 'accueil' },
-        { name: 'Services', page: 'services' },
-        { name: 'Contact', page: 'contact' }
-    ];
-
-    // Création des éléments de la list avec les liens
-    links.forEach(link => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.textContent = link.name;
-        li.appendChild(a);
-        ul.appendChild(li);
-    });
-    nav.appendChild(ul);
-
-    //----- 3..  Inserer <nav> dans la balise divEntete
-    divEntete.appendChild(nav);
-
-    //----- 4.. Rendu de la fonction Entete 
+    //----- 3.. Rendu de la fonction Entete 
     return divEntete;
 }
 
@@ -82,10 +57,8 @@ function PiedPage() {
     let divPiedPage = document.createElement('div');
     divPiedPage.id = "piedPage";
 
-    //----- 2.. Création du contenu du pied de page
-    const p = document.createElement('p');
-    p.textContent = '© 2025 Mon Application SPA';
-    divPiedPage.appendChild(p);
+    //----- 2.. CContenu du pied de page
+    divPiedPage.innerHTML = "Ajouter ic le contenu du pied de la page"
 
     // ----- 3.. Rendu de la fonction PiedPage 
     return divPiedPage;
