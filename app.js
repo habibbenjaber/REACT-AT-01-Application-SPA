@@ -149,7 +149,13 @@ function Accueil() {
     const divPage = document.createElement('div');
 
     //----- 2.. Créer le contenu de la page
-    divPage.innerHTML = "Contenu de la page d'accueil";
+    const titreH1 = document.createElement('h1');
+    titreH1.textContent = 'Découvrez notre première application SPA : Single Page Application.';
+    divPage.appendChild(titreH1);
+
+    const p = document.createElement('p');
+    p.textContent = "Une SPA est une application web où la navigation entre les différentes sections se fait sans rechargement complet du navigateur. Tout se passe sur une seule page, et le contenu est mis à jour via JavaScript.";
+    divPage.appendChild(p);
 
     //----- 3.. Rendu de la fonction
     return divPage;
@@ -166,7 +172,24 @@ function Services() {
     const divPage = document.createElement('div');
 
     //----- 2.. Créer le contenu de la page
-    divPage.innerHTML = "Contenu de la page Services";
+    const titreH1 = document.createElement('h1');
+    titreH1.textContent = 'Nos Services';
+    divPage.appendChild(titreH1);
+
+    const list = document.createElement('ul');
+    const service1 = document.createElement('li');
+    service1.textContent = 'Service 1: Développement web';
+    list.appendChild(service1);
+
+    const service2 = document.createElement('li');
+    service2.textContent = 'Service 2: Design graphique';
+    list.appendChild(service2);
+
+    const service3 = document.createElement('li');
+    service3.textContent = 'Service 3: Référencement SEO';
+    list.appendChild(service3);
+
+    divPage.appendChild(list);
 
     //----- 3.. Rendu de la fonction
     return divPage;
@@ -184,7 +207,63 @@ function Contact() {
     const divPage = document.createElement('div');
 
     //----- 2.. Créer le contenu de la page
-    divPage.innerHTML = "Contenu de la page Contact";
+    const titreH1 = document.createElement('h1');
+    titreH1.textContent = 'Contactez-nous';
+
+    const form = document.createElement('form');
+    form.setAttribute('action', 'mailto:contact@monapp.com');
+    form.setAttribute('method', 'post');
+    form.setAttribute('enctype', 'text/plain');
+
+    const labelName = document.createElement('label');
+    labelName.setAttribute('for', 'name');
+    labelName.textContent = 'Nom:';
+    form.appendChild(labelName);
+
+    const inputName = document.createElement('input');
+    inputName.setAttribute('type', 'text');
+    inputName.setAttribute('id', 'name');
+    inputName.setAttribute('name', 'name');
+    inputName.required = true;
+    form.appendChild(inputName);
+
+    form.appendChild(document.createElement('br'));
+
+    const labelEmail = document.createElement('label');
+    labelEmail.setAttribute('for', 'email');
+    labelEmail.textContent = 'Email:';
+    form.appendChild(labelEmail);
+
+    const inputEmail = document.createElement('input');
+    inputEmail.setAttribute('type', 'email');
+    inputEmail.setAttribute('id', 'email');
+    inputEmail.setAttribute('name', 'email');
+    inputEmail.required = true;
+    form.appendChild(inputEmail);
+
+    form.appendChild(document.createElement('br'));
+
+    const labelMessage = document.createElement('label');
+    labelMessage.setAttribute('for', 'message');
+    labelMessage.textContent = 'Message:';
+    form.appendChild(labelMessage);
+
+    const textareaMessage = document.createElement('textarea');
+    textareaMessage.setAttribute('id', 'message');
+    textareaMessage.setAttribute('name', 'message');
+    textareaMessage.setAttribute('rows', '4');
+    textareaMessage.setAttribute('cols', '50');
+    textareaMessage.required = true;
+    form.appendChild(textareaMessage);
+
+    form.appendChild(document.createElement('br'));
+
+    const boutonEnvoyer = document.createElement('input');
+    boutonEnvoyer.setAttribute('type', 'submit');
+    boutonEnvoyer.setAttribute('value', 'Envoyer');
+    form.appendChild(boutonEnvoyer);
+
+    divPage.appendChild(form);
 
     //----- 3.. Rendu de la fonction
     return divPage;
